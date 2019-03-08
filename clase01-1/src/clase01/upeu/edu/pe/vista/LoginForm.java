@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Toolkit;
 
 @SuppressWarnings("serial")
 public class LoginForm extends JFrame {
@@ -46,6 +47,7 @@ public class LoginForm extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginForm() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginForm.class.getResource("/imagenes/Synchronize_16x16.png")));
 		UsuarioDao dao = new UsuarioDaoImp();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

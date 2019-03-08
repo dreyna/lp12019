@@ -11,6 +11,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import java.awt.Frame;
 
 public class PrincipalForm extends JFrame {
 
@@ -36,18 +42,23 @@ public class PrincipalForm extends JFrame {
 	 * Create the frame.
 	 */
 	public PrincipalForm() {
+		setExtendedState(Frame.MAXIMIZED_BOTH);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(PrincipalForm.class.getResource("/imagenes/Synchronize_16x16.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 956, 300);
+		setBounds(100, 100, 774, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setExtendedState(MAXIMIZED_BOTH);
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 950, 21);
+		menuBar.setBorder(new LineBorder(new Color(0, 0, 0)));
+		menuBar.setBackground(new Color(240, 240, 240));
+		menuBar.setBounds(0, 0, 1920, 56);
 		contentPane.add(menuBar);
 		
-		JMenu mnFile = new JMenu("FILE");
+		JMenu mnFile = new JMenu("");
+		mnFile.setBorder(new LineBorder(Color.GRAY, 1, true));
+		mnFile.setIcon(new ImageIcon(PrincipalForm.class.getResource("/imagenes/Folder_32x32.png")));
 		menuBar.add(mnFile);
 		
 		JMenuItem mntmSalir = new JMenuItem("SALIR");
@@ -58,7 +69,9 @@ public class PrincipalForm extends JFrame {
 		});
 		mnFile.add(mntmSalir);
 		
-		JMenu mnUsuario = new JMenu("USUARIO");
+		JMenu mnUsuario = new JMenu("");
+		mnUsuario.setBorder(new LineBorder(Color.GRAY));
+		mnUsuario.setIcon(new ImageIcon(PrincipalForm.class.getResource("/imagenes/User_32x32.png")));
 		menuBar.add(mnUsuario);
 		
 		JMenuItem mntmCrud = new JMenuItem("CRUD");

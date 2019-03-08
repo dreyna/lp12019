@@ -10,6 +10,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +26,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class UsuarioForm extends JFrame {
 
@@ -55,7 +57,7 @@ public class UsuarioForm extends JFrame {
 	 * Create the frame.
 	 */
 	public UsuarioForm() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(UsuarioForm.class.getResource("/imagenes/Synchronize_16x16.png")));
 		setBounds(100, 100, 450, 453);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,7 +70,7 @@ public class UsuarioForm extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Usuario:");
+        JLabel lblNewLabel = new JLabel("Usuario:");
 		lblNewLabel.setBounds(20, 23, 68, 14);
 		panel.add(lblNewLabel);
 		
@@ -86,11 +88,13 @@ public class UsuarioForm extends JFrame {
 		txtclave.setBounds(104, 48, 300, 20);
 		panel.add(txtclave);
 		
-		JButton btnSearch = new JButton("SEARCH");
+		JButton btnSearch = new JButton("");
+		btnSearch.setIcon(new ImageIcon(UsuarioForm.class.getResource("/imagenes/Search_48x48.png")));
 		btnSearch.setBounds(10, 76, 89, 70);
 		panel.add(btnSearch);
 		
-		JButton btnCreate = new JButton("CREATE");
+		JButton btnCreate = new JButton("");
+		btnCreate.setIcon(new ImageIcon(UsuarioForm.class.getResource("/imagenes/New_48x48.png")));
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String user = txtuser.getText();
@@ -104,11 +108,12 @@ public class UsuarioForm extends JFrame {
 		btnCreate.setBounds(114, 76, 89, 70);
 		panel.add(btnCreate);
 		
-		JButton btnUpdate = new JButton("UPDATE");
+		JButton btnUpdate = new JButton("");
+		btnUpdate.setIcon(new ImageIcon(UsuarioForm.class.getResource("/imagenes/Edit_48x48.png")));
 		btnUpdate.setBounds(214, 76, 89, 70);
 		panel.add(btnUpdate);
 		
-		JButton btnDelete = new JButton("DELETE");
+		JButton btnDelete = new JButton(new ImageIcon(UsuarioForm.class.getResource("/imagenes/Delete_48x48.png")));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(fila>=0){
