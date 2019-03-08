@@ -7,11 +7,7 @@ import clase01.upeu.edu.pe.dao.UsuarioDao;
 import clase01.upeu.edu.pe.entity.Usuario;
 
 public class UsuarioDaoImp implements UsuarioDao{
-	private List<Usuario> lista;
-	public UsuarioDaoImp() {
-		// TODO Auto-generated constructor stub
-		lista = new ArrayList<>();
-	}
+	private List<Usuario> lista = new ArrayList<>();
 
 	@Override
 	public void create(Usuario u) {

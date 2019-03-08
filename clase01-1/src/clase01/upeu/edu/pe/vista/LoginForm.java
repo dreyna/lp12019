@@ -76,7 +76,8 @@ public class LoginForm extends JFrame {
 						if(dao.validar(new Usuario(user,pass))==1) {
 							PrincipalForm pf = new PrincipalForm();
 							pf.setVisible(true);
-							dispose();
+							setVisible(false);
+							System.out.println();
 						}else {
 							JOptionPane.showMessageDialog(null,"Datos Incorrectos...!");							
 						}

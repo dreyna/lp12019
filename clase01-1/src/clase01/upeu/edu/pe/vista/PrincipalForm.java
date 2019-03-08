@@ -66,7 +66,6 @@ public class PrincipalForm extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				UsuarioForm uf = new UsuarioForm();
 				uf.setVisible(true);
-				system.oprint.line("hola");
 			}
 		});
 		mnUsuario.add(mntmCrud);
