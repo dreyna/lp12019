@@ -36,7 +36,7 @@ public class UsuarioForm extends JFrame {
     private UsuarioDao udo = new UsuarioDaoImp();
     private JTable tbdatos;
     private DefaultTableModel model;
-    private int fila;
+    private int fila = -1;
 	/**
 	 * Launch the application.
 	 */
@@ -109,6 +109,10 @@ public class UsuarioForm extends JFrame {
 		panel.add(btnCreate);
 		
 		JButton btnUpdate = new JButton("");
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnUpdate.setIcon(new ImageIcon(UsuarioForm.class.getResource("/imagenes/Edit_48x48.png")));
 		btnUpdate.setBounds(214, 76, 89, 70);
 		panel.add(btnUpdate);
@@ -117,6 +121,17 @@ public class UsuarioForm extends JFrame {
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(fila>=0){
+					int resp=JOptionPane.showConfirmDialog(null,"Eliminar el registro?");
+				      if (JOptionPane.OK_OPTION == resp){
+				    	  udo.delete(fila);
+						  borrar();
+						  limpiar();
+						  listar();
+				       }
+				      else{
+				           System.out.println("No selecciona una opción afirmativa");
+				       }
+
 					
 				}else{
 					JOptionPane.showMessageDialog(null,"Seleccionar Fila");

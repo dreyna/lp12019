@@ -19,6 +19,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Component;
+import javax.swing.border.TitledBorder;
+import java.awt.ComponentOrientation;
 
 @SuppressWarnings("serial")
 public class LoginForm extends JFrame {
@@ -50,23 +56,55 @@ public class LoginForm extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginForm.class.getResource("/imagenes/Synchronize_16x16.png")));
 		UsuarioDao dao = new UsuarioDaoImp();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 292, 492);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setTitle("Jonas");
 		setLocationRelativeTo(null);
-		JLabel lblNewLabel = new JLabel("Usuario:");
-		lblNewLabel.setBounds(104, 36, 68, 14);
-		contentPane.add(lblNewLabel);
 		dao.create(new Usuario("dreyna","123"));
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 11, 256, 431);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalTextPosition(SwingConstants.RIGHT);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel.setIcon(new ImageIcon(LoginForm.class.getResource("/imagenes/User_24x24.png")));
+		lblNewLabel.setBounds(15, 277, 24, 24);
+		panel.add(lblNewLabel);
 		txtusuario = new JTextField();
-		txtusuario.setBounds(182, 36, 103, 20);
-		contentPane.add(txtusuario);
+		txtusuario.setHorizontalAlignment(SwingConstants.CENTER);
+		txtusuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		txtusuario.setBounds(49, 277, 180, 40);
+		panel.add(txtusuario);
 		txtusuario.setColumns(10);
 		
-		JButton btnenviar = new JButton("Calcular");
+		txtpassword = new JPasswordField();
+		txtpassword.setHorizontalAlignment(SwingConstants.CENTER);
+		txtpassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		txtpassword.setBounds(49, 326, 180, 40);
+		panel.add(txtpassword);
+		
+		JLabel lblPassword = new JLabel("");
+		lblPassword.setIcon(new ImageIcon(LoginForm.class.getResource("/imagenes/Key_24x24.png")));
+		lblPassword.setBounds(10, 326, 29, 33);
+		panel.add(lblPassword);
+		
+		JButton btnenviar = new JButton("Login");
+		btnenviar.setHorizontalTextPosition(SwingConstants.LEFT);
+		btnenviar.setIcon(new ImageIcon(LoginForm.class.getResource("/imagenes/Right3Green.png")));
+		btnenviar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnenviar.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnenviar.setBounds(49, 374, 180, 46);
+		panel.add(btnenviar);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(LoginForm.class.getResource("/imagenes/user.png")));
+		label.setBounds(0, 0, 240, 279);
+		panel.add(label);
 		btnenviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -94,15 +132,5 @@ public class LoginForm extends JFrame {
 			}
 			
 		});
-		btnenviar.setBounds(182, 96, 103, 23);
-		contentPane.add(btnenviar);
-		
-		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(104, 61, 68, 14);
-		contentPane.add(lblPassword);
-		
-		txtpassword = new JPasswordField();
-		txtpassword.setBounds(182, 61, 103, 20);
-		contentPane.add(txtpassword);
 	}
 }

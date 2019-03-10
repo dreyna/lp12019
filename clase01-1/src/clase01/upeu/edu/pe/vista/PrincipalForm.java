@@ -17,6 +17,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.Font;
 
 public class PrincipalForm extends JFrame {
 
@@ -42,7 +43,8 @@ public class PrincipalForm extends JFrame {
 	 * Create the frame.
 	 */
 	public PrincipalForm() {
-		setExtendedState(Frame.MAXIMIZED_BOTH);
+		setFont(new Font("Dialog", Font.PLAIN, 11));
+		setTitle("SysLogin");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(PrincipalForm.class.getResource("/imagenes/Synchronize_16x16.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 774, 300);
@@ -55,13 +57,14 @@ public class PrincipalForm extends JFrame {
 		menuBar.setBackground(new Color(240, 240, 240));
 		menuBar.setBounds(0, 0, 1920, 56);
 		contentPane.add(menuBar);
-		
+		setExtendedState(MAXIMIZED_BOTH);
 		JMenu mnFile = new JMenu("");
 		mnFile.setBorder(new LineBorder(Color.GRAY, 1, true));
 		mnFile.setIcon(new ImageIcon(PrincipalForm.class.getResource("/imagenes/Folder_32x32.png")));
 		menuBar.add(mnFile);
 		
 		JMenuItem mntmSalir = new JMenuItem("SALIR");
+		mntmSalir.setIcon(new ImageIcon(PrincipalForm.class.getResource("/imagenes/Log Out_24x24.png")));
 		mntmSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
@@ -75,6 +78,7 @@ public class PrincipalForm extends JFrame {
 		menuBar.add(mnUsuario);
 		
 		JMenuItem mntmCrud = new JMenuItem("CRUD");
+		mntmCrud.setIcon(new ImageIcon(PrincipalForm.class.getResource("/imagenes/User_24x24.png")));
 		mntmCrud.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UsuarioForm uf = new UsuarioForm();
