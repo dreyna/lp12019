@@ -1,8 +1,6 @@
 package clase01.upeu.edu.pe.vista;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -30,6 +28,10 @@ import java.awt.Toolkit;
 
 public class UsuarioForm extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtuser;
 	private JTextField txtclave;
@@ -89,6 +91,20 @@ public class UsuarioForm extends JFrame {
 		panel.add(txtclave);
 		
 		JButton btnSearch = new JButton("");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!txtuser.getText().equals("")) {
+					if(udo.buscar(txtuser.getText())>=0) {
+						JOptionPane.showMessageDialog(null,"existe");
+						tbdatos.changeSelection(udo.buscar(txtuser.getText()), 1, false, false);
+					}else {
+						JOptionPane.showMessageDialog(null,"no existe");
+					}
+				}else {
+					JOptionPane.showMessageDialog(null,"Ingresar nombre de Usuario");
+				}
+			}
+		});
 		btnSearch.setIcon(new ImageIcon(UsuarioForm.class.getResource("/imagenes/Search_48x48.png")));
 		btnSearch.setBounds(10, 76, 89, 70);
 		panel.add(btnSearch);
@@ -112,6 +128,22 @@ public class UsuarioForm extends JFrame {
 		JButton btnUpdate = new JButton("");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(fila>=0){
+					int resp=JOptionPane.showConfirmDialog(null,"Modificar el registro?");
+				      if (JOptionPane.OK_OPTION == resp){
+				    	  udo.update(fila, new Usuario(txtuser.getText(), txtclave.getText()));
+						  borrar();
+						  limpiar();
+						  listar();
+						  JOptionPane.showMessageDialog(null,"Registro Modificado Corrrectamente...!");
+				       }
+				      else{
+				           System.out.println("No selecciona una opción afirmativa");
+				       }
+					
+				}else{
+					JOptionPane.showMessageDialog(null,"Seleccionar Fila");
+				}
 			}
 		});
 		btnUpdate.setIcon(new ImageIcon(UsuarioForm.class.getResource("/imagenes/Edit_48x48.png")));
@@ -128,11 +160,11 @@ public class UsuarioForm extends JFrame {
 						  borrar();
 						  limpiar();
 						  listar();
+						  JOptionPane.showMessageDialog(null,"Registro Eliminado Corrrectamente...!");
 				       }
 				      else{
 				           System.out.println("No selecciona una opción afirmativa");
 				       }
-
 					
 				}else{
 					JOptionPane.showMessageDialog(null,"Seleccionar Fila");
@@ -177,7 +209,6 @@ public class UsuarioForm extends JFrame {
 		List<Usuario> lts = new ArrayList<>();
 		model = (DefaultTableModel) tbdatos.getModel();
 		lts = udo.readAll();
-		System.out.println(lts.size());
 		Object[] datos = new Object[3];
 		for(int i=0;i<lts.size();i++){
 			datos[0]= i+1;

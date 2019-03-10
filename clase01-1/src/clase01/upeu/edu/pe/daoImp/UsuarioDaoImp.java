@@ -57,5 +57,16 @@ public class UsuarioDaoImp implements UsuarioDao{
 		}
 		return y;
 	}
+	@Override
+	public int buscar(String nomuser) {
+		// TODO Auto-generated method stub
+		int x =-1;
+		for(int i=0;i<lista.size();i++){
+			if(lista.get(i).getNomuser().equals(nomuser)){
+				x=i;
+			}
+		}
+		return x;
+	}
 
 }

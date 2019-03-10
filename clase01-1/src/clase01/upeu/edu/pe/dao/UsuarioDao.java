@@ -9,6 +9,8 @@ public interface UsuarioDao {
  public void update(int index, Usuario u);
  public void delete(int index);
  public Usuario read(int index);
+ public int buscar(String nomuser);
  public List<Usuario> readAll();
  public int validar(Usuario u);
+ 
 }

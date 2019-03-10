@@ -16,16 +16,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.List;
+
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.Component;
-import javax.swing.border.TitledBorder;
-import java.awt.ComponentOrientation;
 
 @SuppressWarnings("serial")
 public class LoginForm extends JFrame {
