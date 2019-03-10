@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.Toolkit;
@@ -32,7 +33,7 @@ public class LoginForm extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtusuario;
 	private JPasswordField txtpassword;
-
+	private UsuarioDao dao = new UsuarioDaoImp();
 	/**
 	 * Launch the application.
 	 */
@@ -54,7 +55,7 @@ public class LoginForm extends JFrame {
 	 */
 	public LoginForm() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginForm.class.getResource("/imagenes/Synchronize_16x16.png")));
-		UsuarioDao dao = new UsuarioDaoImp();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 292, 492);
 		contentPane = new JPanel();
@@ -62,9 +63,7 @@ public class LoginForm extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setTitle("Jonas");
-		setLocationRelativeTo(null);
-		dao.create(new Usuario("dreyna","123"));
-		
+		setLocationRelativeTo(null);	    
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 256, 431);
 		contentPane.add(panel);
@@ -104,7 +103,7 @@ public class LoginForm extends JFrame {
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(LoginForm.class.getResource("/imagenes/user.png")));
 		label.setBounds(0, 0, 240, 279);
-		panel.add(label);
+		panel.add(label);		
 		btnenviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {

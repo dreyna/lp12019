@@ -95,6 +95,7 @@ public class UsuarioForm extends JFrame {
 		
 		JButton btnCreate = new JButton("");
 		btnCreate.setIcon(new ImageIcon(UsuarioForm.class.getResource("/imagenes/New_48x48.png")));
+	
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String user = txtuser.getText();
@@ -170,7 +171,7 @@ public class UsuarioForm extends JFrame {
 		scrollPane.setViewportView(tbdatos);
 		setTitle("Principal");
 		setLocationRelativeTo(null);
-		
+		listar();
 	}
 	public void listar(){
 		List<Usuario> lts = new ArrayList<>();
